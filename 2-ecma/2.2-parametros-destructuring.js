@@ -92,7 +92,21 @@ function calcAge(birthYear) {
 calcAge(1993)
 
 // Funcion como expresion
-// Funcion flecha
+const calcAge = function (birthYear){
+  console.log(`Tienes ${2024 - birthYear} años`)
+}
+
+// funcion flecha
+// let birthYear = 1993;
+// let age = 2024 - birthYear;
+
+const calcAge = (birthYear) => console.log(`Tienes ${2024 - birthYear} años`)
+
+const calcAge = (birthYear) => {
+  console.log(`Tienes ${2024 - birthYear} años`)
+}
+
+calcAge(1994)
 
 // Parentesis: Expresiones vs declaraciones
 // Statements vs expressions
