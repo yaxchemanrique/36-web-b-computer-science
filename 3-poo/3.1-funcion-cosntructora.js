@@ -45,6 +45,15 @@ const Person = function (firstName, birthYear) {
   // console.log(this)
   this.firstName = firstName;
   this.birthYear = birthYear;
+
+  // MUUUUUy mala práctica
+  /* this.calcAge = function () {
+    console.log(`La edad de ${this.firstName} es ${2024 - this.birthYear}`)
+  } */
+}
+
+Person.prototype.calcAge = function () {
+  console.log(`La edad de ${this.firstName} es ${2024 - this.birthYear}`)
 }
 
 // Instancia
@@ -61,6 +70,10 @@ console.log(yaxche)
 console.log(ian)
 console.log(samuel)
 
+// yaxche.calcAge();
+// ian.calcAge();
+// samuel.calcAge();
+
 /* 
 * 1. Se crea un objeto vacío {}
 * 2. this = {} y Se ejecuta la funcion constructora Person 
@@ -68,4 +81,6 @@ console.log(samuel)
 * 4. la funcion constructora retorna el objeto creado
 */
 
-//?  Regresamos 8:17
+
+arr.push(6)
+console.log(arr)
