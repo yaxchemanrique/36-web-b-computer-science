@@ -33,16 +33,51 @@ class LinkedList {
   }
 
   getHead() {
-    console.log('La Cabeza de esta LL es: ', this.head)
+    console.log('La Cabeza de esta LL es: ', this.head);
+  }
+
+  getTail() {
+    console.log('La cola de esta LL es: ', this.tail);
+  }
+
+  getLength() {
+    console.log("La longitud de esta lista es de", this.length);
   }
 
   push(value) {
+    // validacion extra: this.length === 0
     const nodo = new Node(value);
     this.tail.next = nodo;
     this.tail = nodo;
     // this.length = this.length + 1;
     this.length += 1;
+
+    return this.length;
   }
+
+  pop() {
+    if(this.length === 0) return 'ehhh we, ya no hay que quitar!';
+
+    let temp = this.head;
+    let pre = this.head;
+    while(temp.next !== null) {
+      pre = temp;
+      temp = temp.next;
+    }
+    this.tail = pre;
+    this.tail.next = null;
+    // this.length = this.length - 1
+    // this.length -= 1;
+    this.length--;
+    if(this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return temp
+  }
+
+
 }
 
 const ll = new LinkedList(11);
@@ -52,13 +87,15 @@ ll.push(23)
 ll.push(7)
 ll.push(4)
 ll.printList()
-console.log(ll.length)
+// console.log(ll.length)
 
 ll.getHead();
+ll.pop()
+ll.printList()
 
-const lista = {
+/* const lista = {
   head: 'cabeza',
   tail: {},
   length: 5
 }
-console.log(lista.head) // 'cabeza'
+console.log(lista.head) // 'cabeza' */
