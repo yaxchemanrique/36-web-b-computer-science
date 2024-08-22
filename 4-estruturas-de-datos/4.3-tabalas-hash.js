@@ -43,6 +43,12 @@ class HashTable {
       return undefined
     }
   }
+
+  keys(){
+    // Imprimir en un arreglo todas las llaves de mi tabla hash,
+    // en este caso, debería imprimir: 
+    // [harina, queso, huevo, leche, tortillas]
+  }
 }
 /* 
 1 : [
