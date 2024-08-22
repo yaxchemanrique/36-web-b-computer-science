@@ -77,8 +77,96 @@ class LinkedList {
     return temp
   }
 
+  unshift(value) {
+    /*
+    // 1. creamos el nuevo nodo que vamos a insertar
+    const nodo = new Node(value);
+    // conectamos el nodo creado con la lista que ya tenemos
+    nodo.next = this.head;
+    // Actualizamos qué nodo es la cabeza
+    this.head = nodo;
+    this.length++;
+    */
+
+    // Falta una validación donde la lista esté vacia
+    const nodo = new Node(value);
+
+    if(this.head === null) { //this.lenght === 0
+      this.head = nodo;
+      this.tail = nodo;
+    } else {
+      nodo.next = this.head;
+      this.head = nodo;
+    }
+    this.length++;
+
+    return this.length;
+  }
+
+  shift() {
+    if(this.length === 0) return undefined;
+
+    let temp = this.head;
+    this.head = this.head.next;
+    this.length--;
+
+    if(this.length === 0 ) {
+      this.tail = null
+    }
+
+    temp.next = null;
+
+    return temp;
+  }
+
+  get(index) {
+    if(typeof index !== 'number') return undefined;
+    if (index < 0 || index >= this.length) return undefined;
+
+    let temp = this.head;
+    for(let i = 0 ; i < index; i++) {
+      temp = temp.next;
+    }
+
+    return temp;
+  }
+
+  set(index, value) {
+    let temp = this.get(index);
+    // if(temp !== null || temp !== undefined || temp !== '' || temp !== 0 || temp !== NaN) {
+    if(temp) {
+      temp.value = value;
+    }
+
+    return temp;
+  }
+
+  insert(index, value) {
+    if(typeof index !== 'number') return undefined;
+    if (index < 0 || index > this.length) return undefined;
+
+    if(index === 0) return this.unshift(value);
+    if(index === this.length) return this.push(value);
+
+    const nodo = new Node(value);
+    const pre = this.get(index - 1);
+    const post = this.get(index);
+    pre.next = nodo;
+    nodo.next = post;
+    this.length++;
+
+    return this.length;
+  }
 
 }
+/* 
+Implementar los siguientes métodos para una lista ligada:
+* ✅ unshift(value): Agrega un nuevo nodo con el valor value al inicio de la lista.
+* ✅ shift(): Elimina y retornar el primer nodo de la lista.
+* ✅ get(index): Devuelve el nodo en la posición index de la lista.
+* ✅ set(index, value): Cambia el valor del nodo en la posición index al valor value.
+* insert(index, value): Inserta un nuevo nodo con el valor value en la posición index de la lista.
+ */
 
 const ll = new LinkedList(11);
 console.log(ll)
@@ -91,7 +179,14 @@ ll.printList()
 
 ll.getHead();
 ll.pop()
-ll.printList()
+ll.printList();
+
+console.log('Método unshift--------------------');
+ll.unshift(0);
+
+ll.printList();
+
+ll.unshift(35);
 
 /* const lista = {
   head: 'cabeza',
