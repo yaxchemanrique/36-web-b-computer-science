@@ -48,13 +48,31 @@ class HashTable {
     // Imprimir en un arreglo todas las llaves de mi tabla hash,
     // en este caso, debería imprimir: 
     // [harina, queso, huevo, leche, tortillas]
+    let allKeys = [];
+    for(let i = 0; i< this.dataMap.length; i++) {
+      if(this.dataMap[i]) {
+        for(let j = 0; j < this.dataMap[i].length; j++) {
+          allKeys.push(this.dataMap[i][j][0]);
+        }
+      }
+    }
+    return allKeys
   }
 }
 /* 
+0 : [
+      ['harina', 100],
+      ['queso', 6]
+    ]
 1 : [
       ['harina', 100],
       ['queso', 6]
     ]
+1 : [
+      ['Javier-1234', {nombre: , apellidos: , cursos:[], calificaciones: []}],
+      ['queso', 6]
+    ]
+
 //                                 0               1
 this.dataMap[renglon] =  [['harina', 100], ['queso', 6]]
 //                          0         1       0       1
@@ -72,6 +90,8 @@ ht.set('tortillas', 86)
 ht.set('leche', 83)
 
 ht.printTable()
+
+console.log(ht.keys())
 
 /* 15 / 2 = 7 Res 1
 15 / 4 = 3 Res 3  */
